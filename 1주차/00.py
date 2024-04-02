@@ -81,4 +81,3 @@ menuMaker.add_cascade(label='정보', menu = second_menu)
 
 # 창 실행 (맨 마지막 줄)
 window.mainloop()
-
