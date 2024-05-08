@@ -5,8 +5,8 @@ root = tkt.Tk()
 root.title("계산기")
 
 # 아이콘 설정
-# photo = tkt.PhotoImage(file="C:/Study/해달/부트캠프/2024-1-파이썬응용/2주차/윈도우계산기아이콘.png")
-photo = tkt.PhotoImage(file="./윈도우계산기아이콘.png")
+photo = tkt.PhotoImage(file="C:/Users/AERO/Downloads/haedal/intermediate-python-namhyeonho/2주차/윈도우계산기아이콘.png")
+#photo = tkt.PhotoImage(file="./윈도우계산기아이콘.png")
 root.iconphoto(False, photo)
 
 # 글 적을 공간 생성!
@@ -18,7 +18,7 @@ def on_click(number):
     entry.insert(tkt.END, number)
 
 def create_button(text, row, column, command, width=13, height=9, columnspan=1, rowspan=1, bg=None):
-    button = tkt.Button(root, text=text, padx=width, pady=height, command=command)
+    button = tkt.Button(root, text=text, padx=width, pady=height, command=command, borderwidth=5) # 버튼의 테두리 두께를 5으로 설정
     button.grid(row=row, column=column, columnspan=columnspan, rowspan=rowspan, sticky='nsew')
 
 
@@ -35,33 +35,45 @@ def operate(operator):
     global first_num
     global 연산자
     연산자 = operator
-    first_num = int(entry.get())
+    first_num = float(entry.get())
     entry.delete(0, tkt.END)
+
+# 소수점 연산 구현
+create_button("•", 5, 2, lambda: on_click('.'), bg='gainsboro')
 
 def on_equal():
-    second_num = int(entry.get())
+    second_num_str = entry.get()
+    second_num = float(second_num_str) if '.' in second_num_str else int(second_num_str)
     entry.delete(0, tkt.END)
 
+    result = 0  # result 변수 초기화
+
     if 연산자 == "+":
-        entry.insert(0, first_num + second_num)
+        result = first_num + second_num
     elif 연산자 == "-":
-        entry.insert(0, first_num - second_num)
+        result = first_num - second_num
     elif 연산자 == "*":
-        entry.insert(0, first_num * second_num)
+        result = first_num * second_num
     elif 연산자 == "/":
-        entry.insert(0, first_num / second_num)
-        
- 
+        result = first_num / second_num
+    elif 연산자 == "%":
+        result = first_num % second_num
+    
+    if result == int(result):  # 결과가 정수일 때
+        entry.insert(0, int(result))  # 정수로 변환하여 결과 표시
+    else:
+        entry.insert(0, result)  # 그 외에는 그대로 표시
 
 
-
-create_button("%", 1, 2, None, bg='gray70')
+create_button("%", 1, 2, lambda: operate("%"), bg='gray70')
 create_button("/", 1, 3, lambda: operate("/"), bg='gray70')
 create_button("*", 2, 3, lambda: operate("*"), bg='gray70')
 create_button("-", 3, 3, lambda: operate("-"), bg='gray70')
 create_button("+", 4, 3, lambda: operate("+"), bg='gray70')
 create_button("•", 5, 2, lambda: on_click('.'), bg='gainsboro')
 create_button("=", 5, 3, on_equal, bg='orange')
+
+
 
     
 root.mainloop()
