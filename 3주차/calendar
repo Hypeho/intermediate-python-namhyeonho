@@ -49,6 +49,7 @@ def calendar_generator(start_weekday, days_in_month):
         text_box.grid(row=1)
 
         text_object_dict[day] = text_box
+        
 
 
         col += 1
