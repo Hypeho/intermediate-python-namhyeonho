@@ -9,7 +9,7 @@ window.resizable(0,0) # 창 크기 설정 불가
 
 
 # 아이콘 입력
-window.iconbitmap("C:\\Users\\AERO\\Downloads\haedal\\intermediate-python-namhyeonho\\1주차\\memo.ico")
+window.iconbitmap("C:\\Users\\AERO\\Downloads\\haedal\\intermediate-python-namhyeonho\\week1\\memo.ico")
 #photo = tkt.PhotoImage(file="C:\\Users\\AERO\\Downloads\\haedal\\bootcamp\\0week\\해달로고.png")
 #window.iconphoto(False, photo)
 

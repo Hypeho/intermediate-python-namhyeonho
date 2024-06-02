@@ -5,7 +5,7 @@ root = tkt.Tk()
 root.title("계산기")
 
 # 아이콘 설정
-photo = tkt.PhotoImage(file="C:/Users/AERO/Downloads/haedal/intermediate-python-namhyeonho/2주차/윈도우계산기아이콘.png")
+photo = tkt.PhotoImage(file="C:/Users/AERO/Downloads/haedal/intermediate-python-namhyeonho/week2/윈도우계산기아이콘.png")
 #photo = tkt.PhotoImage(file="./윈도우계산기아이콘.png")
 root.iconphoto(False, photo)
 
